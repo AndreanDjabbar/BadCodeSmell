@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dispensible</title>
+    <link rel="stylesheet" href="css/dispensible.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="header">
+        <a href=""><span>Bad</span> Code<span> Smell</span></a>
+        <a href="">Code <span>Reengineering</span></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bad Code Smell</a></li>
+            <li><a href="bloaters.html">The Bloaters</a></li>
+            <li><a href="orientedAbuser.html">Object Oriented Abuser</a></li>
+            <li><a href="changePreventer.html">Change Preventer</a></li>
+            <li><a href="dispensible.html" class="active">The Dispensible</a></li>
+            <li><a href="couplers.html">The Couplers</a></li>
+        </ul>
+    </nav>
+    <section id="content-smell">
+        <a href="" id="title">The Dispensible</a>
+        <div class="explanation-explain">   
+            <div class="introduction">
+                <p>Terjadi ketika terdapat sebuah bagian dari code yang tidak diperlukan. Dan ini harus dikeluarkan dari code.</p>
+                <p>Secara umum, The Dispensible memiliki beberapa jenis seperti: <a>The Comment</a>, <a>Duplicate Code</a>, <a>Lazy Class</a>, <a>Data Class</a>, <a>Dead Code</a>, dan <a> Speculative Generality</a>.</p>
+            </div>
+            <div class="the-comment">
+                <a href="">The Comment</a>
+                <p>Terjadi ketika terdapat sebuah code yang diiringi dengan comment untuk penjelasan code secara berlebihan atau tidak jelas. Contoh: </p>
+                <pre><code class="language-java">
+                    public class Example {
+                        // Menghitung dan mengembalikan hasil penjumlahan dua bilangan
+                        // @param a Bilangan pertama
+                        // @param b Bilangan kedua
+                        // @return Hasil penjumlahan a dan b
+                        public int add(int a, int b) {
+                            return a + b;
+                        }
+                    }
+                    
+                </code></pre>
+            </div>
+            <div class="duplicate-code">
+                <a href="">Duplicate Code</a>
+                <p>Terjadi ketika terdapat dua code yang terlihat hampir sama atau bahkan sama. Contoh: </p>
+                <pre><code class="language-java">
+                    public class Calculation {
+    
+                        // Menghitung luas persegi panjang
+                        public int calculateRectangleArea(int length, int width) {
+                            return length * width;
+                        }
+                        
+                        // Menghitung luas segitiga
+                        public double calculateTriangleArea(int base, int height) {
+                            return 0.5 * base * height;
+                        }
+                        
+                        // Menghitung volume balok
+                        public int calculateRectangleVolume(int length, int width, int height) {
+                            return length * width * height;
+                        }
+                        
+                        // Menghitung volume kerucut
+                        public double calculateConeVolume(int radius, int height) {
+                            return (Math.PI * radius * radius * height) / 3;
+                        }
+                        
+                        // Method duplicate untuk menghitung luas segitiga
+                        public double calculateTriangleAreaDuplicate(int base, int height) {
+                            return 0.5 * base * height;
+                        }
+                    }                    
+                </code></pre>
+            </div>
+            <div class="lazy-class">
+                <a href="">Lazy Class</a>
+                <p>Terjadi ketika terdapat sebuah class yang memiliki cost time terlalu tinggi ataupun terlalu mahal.</p>
+            </div>
+            <div class="data-class">
+                <a href="">Data Class</a>
+                <p>Terjadi jika terdapat sebuah class yang hanya memiliki getter dan setter. Ini akan mengakibatkan sebuah class tidak dapat berfungsi secara independen atau mandiri. Contoh: </p>
+                <pre><code class="language-java">
+                    public class Employee {
+                        private String name;
+                        private int age;
+                        private double salary;
+                    
+                        // Konstruktor
+                        public Employee(String name, int age, double salary) {
+                            this.name = name;
+                            this.age = age;
+                            this.salary = salary;
+                        }
+                    
+                        // Getter dan setter untuk semua atribut
+                        public String getName() {
+                            return name;
+                        }
+                    
+                        public void setName(String name) {
+                            this.name = name;
+                        }
+                    
+                        public int getAge() {
+                            return age;
+                        }
+                    
+                        public void setAge(int age) {
+                            this.age = age;
+                        }
+                    
+                        public double getSalary() {
+                            return salary;
+                        }
+                    
+                        public void setSalary(double salary) {
+                            this.salary = salary;
+                        }
+                    }
+                    
+                </code></pre>
+            </div>
+            <div class="dead-code">
+                <a href="">Dead Code</a>
+                <p>Terjadi ketika terdapat bagian dari code yang merupakan variabel, parameter, method, ataupun class yang sudah tidak digunakan lagi karena sudah usang.</p>
+            </div>
+            <div class="speculative-generality">
+                <a href="">Speculative Generality</a>
+                <p>Terjadi ketika terdapat sebuah class, method, ataupun parameter yang tidak digunakan.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-title">
+            <a href="">Made by: Andrean Gusman Djabbar</a>
+        </div>
+        <div class="footer-socmed">
+            <p>Follow</p>
+            <ul> 
+                <li><a href="https://www.instagram.com/andreandjbbr/" target="_blank"><i data-feather="instagram"></i></a></li>
+                <li><a href="https://github.com/AndreanDjabbar" target="_blank"><i data-feather="github"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>

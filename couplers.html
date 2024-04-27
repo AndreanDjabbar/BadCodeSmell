@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Couplers</title>
+    <link rel="stylesheet" href="css/couplers.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="header">
+        <a href=""><span>Bad</span> Code<span> Smell</span></a>
+        <a href="">Code <span>Reengineering</span></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bad Code Smell</a></li>
+            <li><a href="bloaters.html">The Bloaters</a></li>
+            <li><a href="orientedAbuser.html">Object Oriented Abuser</a></li>
+            <li><a href="changePreventer.html">Change Preventer</a></li>
+            <li><a href="dispensible.html">The Dispensible</a></li>
+            <li><a href="couplers.html" class="active">The Couplers</a></li>
+        </ul>
+    </nav>
+    <section id="content-smell">
+        <a href="" id="title">The Couplers</a>
+        <div class="explanation-explain">   
+            <div class="introduction">
+                <p>Terjadi ketika ada sebuah hubungan pada class yang terlalu berlebihan sehingga kita akan mengalami kesulitan pada saat ingin melakukan perubahan pada sebuah class tanpa mempengaruhi class lainnya.</p>
+                <p>Secara umum, The Couplers memiliki beberapa jenis seperti: <a>Feature Envy</a>, <a>Inappropriate Intimacy</a>, <a>Message Chains</a>, dan <a>Middle Man</a>.</p>
+            </div>
+            <div class="feature-envy">
+                <a href="">Feature Envy</a>
+                <p>Terjadi ketika ada sebuah method yang lebih banyak menggunakan atribut atau data dari objek lain dari pada atribut atau datanya sendiri. Contoh: </p>
+                <pre><code class="language-java">
+                    import java.util.ArrayList;
+                    import java.util.List;
+                    
+                    public class FeatureEnvy {
+                        class Product {
+                            private String name;
+                            private double price;
+                            
+                            public Product(String name, double price) {
+                                this.name = name;
+                                this.price = price;
+                            }
+                            
+                            public String getName() {
+                                return name;
+                            }
+                            
+                            public double getPrice() {
+                                return price;
+                            }
+                        }
+                        
+                        class ShoppingCart {
+                            private List<Product> products = new ArrayList<>();
+                            
+                            public void addProduct(Product product) {
+                                products.add(product);
+                            }
+                            
+                            public double calculateTotalPrice() {
+                                double total = 0;
+                                for (Product product : products) {
+                                    total += product.getPrice();
+                                }
+                                return total;
+                            }
+                            
+                            public void printProductDetails() {
+                                for (Product product : products) {
+                                    System.out.println("Product Name: " + product.getName() + ", Price: " + product.getPrice());
+                                }
+                            }
+                        }
+                    }
+    </code></pre>
+            </div>
+            <div class="inappropriate-intimacy">
+                <a href="">Inappropriate Intimacy</a>
+                <p>Terjadi ketika terdapat sebuah class yang memiliki hubungan yang terlalu erat dengan antar kelas lainnya. Biasanya satu class menggunakan bagian internal dari atribut atau data dari class lainnya. Contoh: </p>
+                <pre><code class="language-java">
+                    public class Intimacy {
+
+                        static class Wallet {
+                            private double balance;
+                    
+                            public Wallet(double balance) {
+                                this.balance = balance;
+                            }
+                    
+                            public double getBalance() {
+                                return balance;
+                            }
+                    
+                            public void setBalance(double balance) {
+                                this.balance = balance;
+                            }
+                        }
+                    
+                        static class Person {
+                            private String name;
+                            private Wallet wallet;
+                    
+                            public Person(String name, Wallet wallet) {
+                                this.name = name;
+                                this.wallet = wallet;
+                            }
+                    
+                            public void addMoney(double amount) {
+                                wallet.setBalance(wallet.getBalance() + amount);
+                            }
+                    
+                            public void spendMoney(double amount) {
+                                double currentBalance = wallet.getBalance();
+                                if (currentBalance >= amount) {
+                                    wallet.setBalance(currentBalance - amount);
+                                } else {
+                                    System.out.println(name + " does not have enough money.");
+                                }
+                            }
+                        }
+                    }
+    </code></pre>
+            </div>
+            <div class="message-chains">
+                <a href="">Message Chains</a>
+                <p>Terjadi ketika terdapat sebuah class yang dalam melakukan pemanggilan sebuah method/data perlu didahulukan dengan beberapa method lainnya terlebih dahulu. Contoh: </p>
+                <pre><code class="language-java">
+                    import java.util.List;
+                    import java.util.ArrayList;
+
+                    public class MessageChain {
+                        static class Customer {
+                            private String name;
+                            private Order order;
+
+                            public Customer(String name, Order order) {
+                                this.name = name;
+                                this.order = order;
+                            }
+
+                            public Order getOrder() {
+                                return order;
+                            }
+                        }
+
+                        static class Order {
+                            private List<Item> items = new ArrayList<>();
+                            
+                            public void addItem(Item item) {
+                                items.add(item);
+                            }
+
+                            public List<Item> getItems() {
+                                return items;
+                            }
+                        }
+
+                        static class Item {
+                            private String name;
+                            private double price;
+
+                            public Item(String name, double price) {
+                                this.name = name;
+                                this.price = price;
+                            }
+
+                            public double getPrice() {
+                                return price;
+                            }
+                        }
+
+                        public static void main(String[] args) {
+                            Order order = new Order();
+                            order.addItem(new Item("Item 1", 100));
+                            order.addItem(new Item("Item 2", 200));
+
+                            Customer customer = new Customer("Customer 1", order);
+
+                            customer.getOrder().getItems().get(0).getPrice();
+                        }
+                    }
+    </code></pre>
+            </div>
+            <div class="middle-man">
+                <a href="">Middle Man</a>
+                <p>Terjadi jika terdapat sebuah class yang jika ingin melakukan sebuah action, harus menggunakan perantara dari class lainnya. Contoh: </p>
+                <pre><code class="language-java">
+                    public class MiddleMan {
+                        private DataService dataService;
+                    
+                        public MiddleMan() {
+                            this.dataService = new DataService();
+                        }
+                        
+                        public String fetchData() {
+                            return dataService.getData();
+                        }
+                    }
+                    
+                    public class DataService {
+                        public String getData() {
+                            return "Data dari Service";
+                        }
+                    }
+                    
+                    public class Main {
+                        public static void main(String[] args) {
+                            MiddleMan middleMan = new MiddleMan();
+                            String data = middleMan.fetchData();
+                            System.out.println("Data: " + data);
+                        }
+                    }
+                    
+                </code></pre>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-title">
+            <a href="">Made by: Andrean Gusman Djabbar</a>
+        </div>
+        <div class="footer-socmed">
+            <p>Follow</p>
+            <ul> 
+                <li><a href="https://www.instagram.com/andreandjbbr/" target="_blank"><i data-feather="instagram"></i></a></li>
+                <li><a href="https://github.com/AndreanDjabbar" target="_blank"><i data-feather="github"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>

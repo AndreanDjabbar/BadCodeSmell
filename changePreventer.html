@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Preventer</title>
+    <link rel="stylesheet" href="css/changePreventer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="header">
+        <a href=""><span>Bad</span> Code<span> Smell</span></a>
+        <a href="">Code <span>Reengineering</span></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bad Code Smell</a></li>
+            <li><a href="bloaters.html">The Bloaters</a></li>
+            <li><a href="orientedAbuser.html">Object Oriented Abuser</a></li>
+            <li><a href="changePreventer.html" class="active">Change Preventer</a></li>
+            <li><a href="dispensible.html">The Dispensible</a></li>
+            <li><a href="couplers.html">The Couplers</a></li>
+        </ul>
+    </nav>
+    <section id="content-smell">
+        <a href="" id="title">Change Preventer</a>
+        <div class="explanation-explain">   
+            <div class="introduction">
+                <p>Terjadi ketika terdapat pola design pada code yang dirancang dengan begitu kompleks sehingga untuk membuat perubahan pada sebuah code atau program, akan menjadi sulit dan mahal. Contohnya ada bagian code yang rumit dan mempunyai hubungan yang berkaitan erat dengan bagian code lain.</p>
+                <p>Secara umum, Change Preventer memiliki beberapa jenis seperti: <a>Divergent Change</a>, <a>Shotgun Surgery</a>, dan <a>Parallel Inheritance Hierarchies</a>.</p>
+            </div>
+            <div class="divergent-change">
+                <a href="">Divergent Change</a>
+                <p>Terjadi ketika terdapat bagian dari code yang memiliki tanggung jawab yang sangat luas atau memiliki ketergantungan yang kuat pada banyak bagian lain dari sistem.</p>
+            </div>
+            <div class="shotgun-surgery">
+                <a href="">Shotgun Surgery</a>
+                <p>Terjadi ketika pada saat kita ingin memodifikasi beberapa bagian, namun akan berpengaruh juga ke bagian lain. Contoh: </p>
+                <pre><code class="language-java">
+                    public class ShotgunSurgery {
+                        // Class 1
+                        static class Customer {
+                            private double discountRate;
+                    
+                            public Customer(double discountRate) {
+                                this.discountRate = discountRate;
+                            }
+                    
+                            public double calculatePrice(double price) {
+                                return price - (price * discountRate);
+                            }
+                        }
+                    
+                        // Class 2
+                        static class Product {
+                            private double discountRate;
+                    
+                            public Product(double discountRate) {
+                                this.discountRate = discountRate;
+                            }
+                    
+                            public double calculateDiscount(double price) {
+                                return price * discountRate;
+                            }
+                        }
+                    
+                        // Class 3
+                        static class Order {
+                            private double discountRate;
+                    
+                            public Order(double discountRate) {
+                                this.discountRate = discountRate;
+                            }
+                    
+                            public double applyDiscount(double totalPrice) {
+                                return totalPrice - (totalPrice * discountRate);
+                            }
+                        }
+                        public static void main(String[] args) {
+                            double discountRate = 0.1;
+                            Customer customer = new Customer(discountRate);
+                            Product product = new Product(discountRate);
+                            Order order = new Order(discountRate);
+                            // Some operations with the classes
+                        }
+                    }
+                    
+                </code></pre>
+            </div>
+            <div class="parallel-inheritance">
+                <a href="">Parallel Inheritance Hierarchies</a>
+                <p>Terjadi pada saat kita ingin membuat sebuah subclass untuk suatu class, namun kita harus membuat subclass untuk class lainnya juga. Contoh: </p>
+                <pre><code class="language-java">
+                    public class ParallelInHerit {
+                        // Employee Type Hierarch
+                        class EmployeeType {
+                            public String getTitle() {
+                                return "Employee";
+                            }
+                        }
+                    
+                        class ManagerType extends EmployeeType {
+                            @Override
+                            public String getTitle() {
+                                return "Manager";
+                            }
+                        }
+                    
+                        class DirectorType extends EmployeeType {
+                            @Override
+                            public String getTitle() {
+                                return "Director";
+                            }
+                        }
+                    
+                        // Employee Benefit Hierarchy
+                        class EmployeeBenefit {
+                            public String getBenefits() {
+                                return "Basic Benefits";
+                            }
+                        }
+                    
+                        class ManagerBenefit extends EmployeeBenefit {
+                            @Override
+                            public String getBenefits() {
+                                return "Basic Benefits + Bonus";
+                            }
+                        }
+                    
+                        class DirectorBenefit extends EmployeeBenefit {
+                            @Override
+                            public String getBenefits() {
+                                return "Basic Benefits + Bonus + Stock Options";
+                            }
+                        }
+                    
+                    }
+                    
+                </code></pre>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-title">
+            <a href="">Made by: Andrean Gusman Djabbar</a>
+        </div>
+        <div class="footer-socmed">
+            <p>Follow</p>
+            <ul> 
+                <li><a href="https://www.instagram.com/andreandjbbr/" target="_blank"><i data-feather="instagram"></i></a></li>
+                <li><a href="https://github.com/AndreanDjabbar" target="_blank"><i data-feather="github"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>

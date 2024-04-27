@@ -1,0 +1,332 @@
+html, *, body {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #153448;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header a {
+    padding: 20px;
+    font-size: 40px;
+    color: white;
+    font-weight: 600;
+}
+
+.header a span {
+    color: #E9C874;
+}
+
+nav {
+    background-color: #E9C874;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 90px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+    gap: 150px;
+    align-items: center;
+}
+
+nav ul li a {
+    font-size: 20px;
+    font-weight: 800;
+    color: #153448;
+}
+
+nav ul li a:hover {
+    transition: color 0.3s ease;
+    color: #5ca26a;
+}
+
+.active {
+    color: red;
+}
+
+#content-smell {
+    background-color: #3C5B6F;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+#content-smell #title {
+    padding-top: 100px;
+    color: #0a2d44;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#content-smell .explanation-explain {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    gap: 50px;
+    background-color: #153448;
+}
+
+#content-smell .explanation-explain .introduction p {
+    padding: 15px;
+    font-size: 15px;
+    color: white;
+}
+
+#content-smell .explanation-explain .introduction {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#content-smell .explanation-explain .introduction a {
+    color: #E9C874;
+    font-weight: 600;
+}
+
+
+.the-comment,
+.duplicate-code,
+.lazy-class,
+.data-class,
+.dead-code,
+.speculative-generality  {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: center;
+}
+
+.the-comment a,
+.duplicate-code a,
+.lazy-class a,
+.data-class a,
+.dead-code a,
+.speculative-generality a {
+    font-size: 20px;
+    color: #E9C874;
+    font-weight: 600;
+}
+
+.the-comment p,
+.duplicate-code p,
+.lazy-class p,
+.data-class p,
+.dead-code p,
+.speculative-generality p {
+    color: white;
+}
+
+.the-comment pre,
+.duplicate-code pre,
+.lazy-class pre,
+.data-class pre,
+.dead-code pre,
+.speculative-generality pre {
+    padding: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #5ca26a;
+    border-radius: 20px;
+    color: black
+}
+
+footer {
+    display: flex;
+    background-color: #E9C874;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .footer-title {
+    padding: 20px;
+    color: red;
+}
+
+footer .footer-title a {
+    font-size: 20px;
+    color: #153448;
+    font-weight: 600;
+}
+
+footer .footer-socmed {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 30%;
+}
+
+footer .footer-socmed p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #153448;
+}
+
+footer .footer-socmed ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+footer .footer-socmed a {
+    color: #153448;
+}
+
+@media(max-width :768px) {
+    .header a {
+        font-size: 25px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        padding: 8px;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        font-size: 12px;
+        font-weight: 800;
+        color: #153448;
+    }
+
+    .the-comment,
+    .duplicate-code,
+    .lazy-class,
+    .data-class,
+    .dead-code,
+    .speculative-generality  {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        justify-content: center;
+    }
+
+    .the-comment a,
+    .duplicate-code a,
+    .lazy-class a,
+    .data-class a,
+    .dead-code a,
+    .speculative-generality a {
+        font-size: 15px;
+        color: #E9C874;
+        font-weight: 600;
+    }
+
+    .the-comment p,
+    .duplicate-code p,
+    .lazy-class p,
+    .data-class p,
+    .dead-code p,
+    .speculative-generality p {
+        color: white;
+    }
+
+    .the-comment pre,
+    .duplicate-code pre,
+    .lazy-class pre,
+    .data-class pre,
+    .dead-code pre,
+    .speculative-generality pre {
+        padding: 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background-color: #5ca26a;
+        border-radius: 20px;
+        color: black
+    }
+}
+
+@media(max-width :450px) {
+    .header a {
+        font-size: 17px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        padding: 5px;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        font-size: 7px;
+        font-weight: 800;
+        color: #153448;
+        line-height: 0;
+    }
+
+    .the-comment,
+    .duplicate-code,
+    .lazy-class,
+    .data-class,
+    .dead-code,
+    .speculative-generality  {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .the-comment a,
+    .duplicate-code a,
+    .lazy-class a,
+    .data-class a,
+    .dead-code a,
+    .speculative-generality a {
+        font-size: 15px;
+        color: #E9C874;
+        font-weight: 600;
+    }
+
+    .the-comment p,
+    .duplicate-code p,
+    .lazy-class p,
+    .data-class p,
+    .dead-code p,
+    .speculative-generality p {
+        color: white;
+    }
+
+    .the-comment pre,
+    .duplicate-code pre,
+    .lazy-class pre,
+    .data-class pre,
+    .dead-code pre,
+    .speculative-generality pre {
+        padding: 5px;
+        font-size: 7px;
+        font-weight: 600;
+        background-color: #5ca26a;
+        border-radius: 20px;
+        color: black
+    }
+}
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Oriented Abuser</title>
+    <link rel="stylesheet" href="css/orientedAbuser.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="header">
+        <a href=""><span>Bad</span> Code<span> Smell</span></a>
+        <a href="">Code <span>Reengineering</span></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bad Code Smell</a></li>
+            <li><a href="bloaters.html">The Bloaters</a></li>
+            <li><a href="orientedAbuser.html" class="active">Object Oriented Abuser</a></li>
+            <li><a href="changePreventer.html">Change Preventer</a></li>
+            <li><a href="dispensible.html">The Dispensible</a></li>
+            <li><a href="couplers.html">The Couplers</a></li>
+        </ul>
+    </nav>
+    <section id="content-smell">
+        <a href="" id="title">Object Oriented Abuser</a>
+        <div class="explanation-explain">   
+            <div class="introduction">
+                <p>Terjadi ketika terdapat pola design yang berlebihan dalam menggunakan konsep OOP tanpa alasan yang jelas atau dengan cara yang tidak tepat.</p>
+                <p>Secara umum, Object Oriented Abuser memiliki beberapa jenis seperti: <a>Switch Statement</a>, <a>Temporary Field</a>, <a>Refused Bequest</a>, dan <a>Alternative Class with Different Interface</a>.</p>
+            </div>
+            <div class="switch-statement">
+                <a href="">Switch Statement</a>
+                <p>Terjadi ketika terdapat penggunaan switch operator ataupun if statement yang sangat rumit atau kompleks. Contoh: </p>
+                <pre><code class="language-java">
+                    public enum FoodType {
+                        PIZZA,
+                        BURGER,
+                        SUSHI
+                    }
+                    
+                    public class FoodOrderProcessor {
+                        
+                        public void processOrder(FoodType foodType) {
+                            switch (foodType) {
+                                case PIZZA:
+                                    preparePizza();
+                                    break;
+                                case BURGER:
+                                    prepareBurger();
+                                    break;
+                                case SUSHI:
+                                    prepareSushi();
+                                    break;
+                                default:
+                                    System.out.println("Unknown food type");
+                            }
+                        }
+                        
+                        private void preparePizza() {
+                            System.out.println("Preparing pizza...");
+                        }
+                        
+                        private void prepareBurger() {
+                            System.out.println("Preparing burger...");
+                        }
+                        
+                        private void prepareSushi() {
+                            System.out.println("Preparing sushi...");
+                        }
+                    }                    
+                </code></pre>
+            </div>
+            <div class="temporary-field">
+                <a href="">Temporary Field</a>
+                <p>Terjadi ketika terdapat sebuah element yang hanya digunakan pada keadaan tertentu saja dan tidak akan berguna jika di luar keadaan tersebut.</p>
+            </div>
+            <div class="refused-bequest">
+                <a href="">Refused Bequest</a>
+                <p>Terjadi ketika terdapat Penggunaan inheritance antara superclass dan subclass yang tidak menyeluruh. Biasanya subclass akan menyembunyikan function inheritancenya. Contoh: </p>
+                <pre><code class="language-java">
+                    // Superclass
+                    public class Animal {
+                        public void eat() {
+                            System.out.println("Animal is eating...");
+                        }
+
+                        public void sleep() {
+                            System.out.println("Animal is sleeping...");
+                        }
+
+                        public void makeSound() {
+                            System.out.println("Animal is making a sound...");
+                        }
+                    }
+
+                    // Subclass
+                    public class Dog extends Animal {
+                        public void bark() {
+                            System.out.println("Dog is barking...");
+                        }
+                    }
+                </code></pre>
+            </div>
+            <div class="alternative-class">
+                <a href="">Alternative Class with Different Interface</a>
+                <p>Terjadi jika terdapat dua 2 buah class yang memiliki fungsi identik atau serupa namun memiliki nama fungsi yang berbeda. Contoh: </p>
+                <pre><code class="language-java">
+                    public class Square {
+                        private double side;
+                    
+                        public Square(double side) {
+                            this.side = side;
+                        }
+                    
+                        public double calculateArea() {
+                            return side * side;
+                        }
+                    }
+                    
+                    public class Rectangle {
+                        private double width;
+                        private double height;
+                    
+                        public Rectangle(double width, double height) {
+                            this.width = width;
+                            this.height = height;
+                        }
+                    
+                        public double computeArea() {
+                            return width * height;
+                        }
+                    }                    
+                </code></pre>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-title">
+            <a href="">Made by: Andrean Gusman Djabbar</a>
+        </div>
+        <div class="footer-socmed">
+            <p>Follow</p>
+            <ul> 
+                <li><a href="https://www.instagram.com/andreandjbbr/" target="_blank"><i data-feather="instagram"></i></a></li>
+                <li><a href="https://github.com/AndreanDjabbar" target="_blank"><i data-feather="github"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>
